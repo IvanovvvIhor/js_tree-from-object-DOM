@@ -24,14 +24,16 @@ function createTree(element, data) {
   // WRITE YOUR CODE HERE
   const ul = document.createElement('ul');
 
-  for (const key of data) {
+  for (const key in data) {
     const li = document.createElement('li');
 
     li.textContent = key;
 
-    if (key !== null && key.constructor === Object) {
+    if (data[key] !== null && data[key].constructor === Object) {
       createTree(li, data[key]);
     }
+
+    ul.append(li);
   }
 
   element.append(ul);
